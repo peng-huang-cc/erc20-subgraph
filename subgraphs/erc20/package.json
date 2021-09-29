@@ -1,0 +1,33 @@
+{
+  "name": "erc20-subgraph",
+  "version": "0.1.0",
+  "description": "erc20 subgraph",
+  "author": "peng-huang-cc <h499871809@gmail.com>",
+  "homepage": "https://github.com/peng-huang-cc/subgraphs.git/tree/master/subgraphs/erc20-subgraph#readme",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "subgraphs/*"
+    ],
+    "nohoist": [
+      "**/erc20",
+      "**/erc20/**"
+    ]
+  },
+  "scripts": {
+    "compile": "npx graph-compiler --config $CONFIG --include node_modules/@openzeppelin/subgraphs/src/datasources --export-schema --export-subgraph",
+    "codegen": "npx graph codegen",
+    "build": "npx graph build",
+    "create-testnet": "npx graph create erc20 --node http://10.0.152.117:8020/",
+    "deploy-testnet": "npx graph deploy erc20 --ipfs http://10.0.152.117:5001/ --node http://10.0.152.117:8020/",
+    "remove-testnet": "npx graph remove erc20 --ipfs http://10.0.152.117:5001/ --node http://10.0.152.117:8020/"
+  },
+  "dependencies": {
+    "@amxx/graphprotocol-utils": "^1.0.0-alpha.11",
+    "@openzeppelin/contracts": "^4.3.0-rc.0",
+    "@graphprotocol/graph-cli": "0.21.0",
+    "@graphprotocol/graph-ts": "0.20.1",
+    "@openzeppelin/subgraphs": "^0.1.0"
+  }
+}

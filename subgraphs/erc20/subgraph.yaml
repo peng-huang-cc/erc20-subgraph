@@ -1,0 +1,27 @@
+specVersion: 0.0.2
+description: ERC20 for Ethereum
+repository: https://github.com/peng-huang-cc/erc20-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: erc20
+    network: mainnet
+    source:
+      address: "0x6500585528c5e34AF6e97c237f1DF7c7765eec77"
+      abi: IERC20
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ERC20Contract
+      abis:
+        - name: IERC20
+          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC20Metadata.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/erc20.ts

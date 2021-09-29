@@ -1,0 +1,18 @@
+{
+  "name": "@peng-huang-cc/subgraphs",
+  "version": "1.0.0",
+  "description": "A dictionary of subgraphs",
+  "author": "peng-huang-cc <h499871809@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/peng-huang-cc/subgraphs.git#readme",
+  "workspaces": {
+    "packages": [
+      "subgraphs/*"
+    ],
+    "nohoist": [
+      "**/erc20",
+      "**/erc20/**"
+    ]
+  },
+  "private": true
+}
